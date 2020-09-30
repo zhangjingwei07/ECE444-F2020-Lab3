@@ -30,7 +30,7 @@ def index():
     old_email = session.get('email')
 
     if 'utoronto' not in form.email.data:
-      flash('Please use your UofT email!')
+      flash('Looks like you have changed your email!')
       session['email'] = None
     elif (old_email is not None and old_email != form.email.data):
       flash('Looks like you have changed your email!')
