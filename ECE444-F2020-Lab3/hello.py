@@ -28,6 +28,7 @@ def index():
   if form.validate_on_submit():
     old_name = session.get('name')
     old_email = session.get('email')
+
     if 'utoronto' not in form.email.data:
       flash('Please use your UofT email!')
       session['email'] = None
@@ -42,7 +43,8 @@ def index():
     session['name'] = form.name.data
     return redirect(url_for('index'))
   return render_template('index.html',
-                         current_time=datetime.utcnow(), form = form, name=session.get('name'), email=session.get('email', None))
+                         current_time=datetime.utcnow(), form = form,
+                         name=session.get('name'), email=session.get('email', -1))
 @app.route('/user/<name>')
 def user(name):
   return render_template('user.html', name=name)
